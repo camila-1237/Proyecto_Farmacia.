@@ -1,4 +1,8 @@
 {% load static %}
+
+{% block content %}
+
+{% endblock %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,21 +11,68 @@
 </head>
 <body>
     {% include 'index.html' %}
-    <h1>Tipos de Productos</h1>
+    <h1>Tipos de Categorias</h1>
     <div class="container">
         <table>
+            <tr>
+                <th>Categoria</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
             {% for tipo in tipos_productos %}
                 <tr>
                     <td>{{ tipo.nombre }}</td>
+                    <td>
+                        <a href="{% url 'modificar_tipo_producto' tipo.id %}">🖊️</a>
+                    </td>
+                    <td>
+                        <form id="eliminarForm" method="POST" action="{% url 'eliminar_tipo_producto' tipo.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="tipo_id" value="{{ tipo.id }}">
+                            <a href="#" onclick="eliminarCategoria(event)">🗑</a>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
+        <style>
+            input[type="text"] {
+                position: absolute;
+                left: 300px;
+                top: 20px;
+                padding: 10px;
+                width: 300px;
+                border: 1px solid #000000;
+                border-radius: 5px;
+            }
+            
+            button[type="submit"] {
+                background-color: #db44a9;
+                position: absolute;
+                left: 630px;
+                top: 21px;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+        <form action="{% url 'buscar_productos' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar Productos">
+            <button type="submit">Buscar</button>
+        </form>
     </div>
-
-
     
+
+    <script>
+        function eliminarCategoria(event) {
+            event.preventDefault();
+            let confirmacion = confirm("¿Estás seguro de que deseas eliminar esta categoria?");
+            if (confirmacion) {
+                document.getElementById('eliminarForm').submit();
+            }
+        }
+    </script>
 </body>
 </html>
-{% block content %}
-
-{% endblock %}

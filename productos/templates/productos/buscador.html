@@ -1,0 +1,32 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de la búsqueda</title>
+    <link rel="stylesheet" href="{% static 'css/listas.css' %}">
+</head>
+<body>
+    {% include 'index.html' %}
+    <h1>Resultados de la búsqueda</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Codigo de barras</th>
+            <th>Precio</th>
+            <th>Cantidad en el inventario</th>
+            <th>Categoria de productos</th>
+        </tr>
+        {% for producto in resultados %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.codigo_barras}}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.cantidad_inventario}}</td>
+                <td>{{ producto.tipo }}</td>
+            
+            </tr> 
+            
+        {% endfor %}
+    </table>
+</body>
+</html>

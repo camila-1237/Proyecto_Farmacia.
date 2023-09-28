@@ -1,0 +1,137 @@
+#navegador {
+    background: #dbd6d6; /* Cambia el color de fondo del sidebar */
+    color: white; /* Cambia el color del texto en el sidebar */
+    width: 250px; /* Ancho del sidebar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+}
+
+#contenido {
+    margin-left: 260px; /* Añade un margen izquierdo para dejar espacio para el sidebar */
+    padding: 20px;
+}
+
+#navegador ul {
+    list-style: none;
+    padding: 0;
+}
+
+#navegador a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Hace que los enlaces ocupen todo el ancho del sidebar */
+    padding: 10px 0; /* Añade un espacio entre los enlaces */
+}
+
+#navegador a:hover {
+    background: #555; /* Cambia el color de fondo al pasar el cursor por encima */
+}
+
+
+/* Resto de tus estilos CSS para la barra de navegación vertical aquí */
+
+
+#navegador img {
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+#navegador nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#navegador nav li {
+    position: relative;
+}
+
+#navegador nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    padding: 10px 20px;
+}
+
+#navegador nav .sub-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+    top: 0;
+    right: 100%; /* Coloca el submenú a la derecha del elemento principal */
+}
+
+#navegador nav li:hover .sub-menu {
+    display: block;
+}
+
+#navegador nav .sub-menu li {
+    width: 100%;
+}
+
+#navegador nav .sub-menu li a {
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* Ajusta el tamaño de fuente para el submenú si es necesario */
+}
+
+#navegador nav li.menu-item:hover > a:after {
+    transform: rotate(90deg);
+}
+#navegador img {
+    margin-top: 10px; /* Ajusta el margen superior según tu preferencia */
+    height: 80px;
+    width: 79px;
+    border-radius: 30%;
+    border: 1px solid black;
+    align-self: flex-end; /* Alinea la imagen en la parte inferior de la barra de navegación vertical */
+}
+/* ... (estilos anteriores) ... */
+
+.desplegable > a::after {
+    content: " ▼"; /* Agrega la flecha después del enlace */
+    display: inline-block;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.desplegable.abierto > a::after {
+    transform: rotate(180deg); 
+}
+
+/* ... (estilos posteriores) ... */
+/* ... (otros estilos) ... */
+
+.desplegable {
+    position: relative; /* Asegura que los elementos padres sean relativos */
+}
+
+/* Estilo para los submenús */
+/* Estilo para los submenús */
+.sub-menu {
+    display: none; /* Oculta inicialmente los submenús */
+    position: absolute;
+    top: 100%; /* Coloca el submenú debajo del elemento padre */
+    left: 0;
+    background-color: #333; /* Cambia el color de fondo del submenú */
+    width: 100%; /* Ajusta el ancho del submenú */
+    z-index: 1; /* Asegura que el submenú aparezca sobre otros elementos */
+}
+
+/* Estilo para los elementos del submenú */
+.sub-item {
+    padding: 10px;
+}
+
+/* Muestra el submenú cuando el elemento padre está abierto */
+.desplegable.abierto .sub-menu {
+    display: block;
+}
+
+

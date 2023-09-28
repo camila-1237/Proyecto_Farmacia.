@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="registro-container">
+        <img src="{% static 'images/superior.png' %}" class="l" alt="superior">
+        <br>
+        <div class="registro-box">
+            <h1>Registro</h1>
+            <form method="post" action="{% url 'registro' %}">
+                {% csrf_token %}
+                <div>
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+                    <label for="email">Correo electrónico:</label>
+                    <input type="text" id="email" name="email">
+                    <select name="email_domain" id="email_domain" onchange="completeEmail()">
+                        <option value="">Selecciona un dominio</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hotmail.com">hotmail.com</option>
+                    </select>
+                </div>
+                <br><br>
+                <label for="password1">Contraseña:</label>
+                <input type="password" id="password1" name="password1" required>
+                <div id="password-validation" style="color: red;"></div>
+                <br><br>
+                <label for="password2">Confirmar contraseña:</label>
+                <input type="password" id="password2" name="password2" required>
+                <div id="password-match" style="color: red;"></div>
+                <br><br>
+
+                <button type="submit" id="registro-button" disabled>Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión </a></p>
+        </div>
+    </div>
+    <script>
+        function completeEmail() {
+            var email = document.getElementById("email");
+            var emailDomain = document.getElementById("email_domain").value;
+            var parts = email.value.split('@');
+            var username = parts[0]
+            email.value = username + "@" + emailDomain;
+        }
+        document.getElementById("password1").addEventListener("input", validarContraseña);
+        document.getElementById("password2").addEventListener("input", validarContraseña);
+
+        function validarContraseña() {
+            var contraseña1 = document.getElementById("password1").value;
+            var contraseña2 = document.getElementById("password2").value;
+            var mensajeValidación = document.getElementById("password-validation");
+            var mensajeCoincidencia = document.getElementById("password-match");
+            var botonRegistro = document.getElementById("registro-button");
+
+            var tieneMayuscula = /[A-Z]/.test(contraseña1);
+            var tieneNumero = /\d/.test(contraseña1);
+            var tieneAsterisco = /\*/.test(contraseña1);
+
+            if (tieneMayuscula && tieneNumero && tieneAsterisco) {
+                mensajeValidación.textContent = "Contraseña válida.";
+                mensajeValidación.style.color = "green";
+            } else {
+                mensajeValidación.textContent = "La contraseña debe contener al menos una letra mayúscula, un número y un asterisco (*).";
+                mensajeValidación.style.color = "black";
+            }
+
+            if (contraseña1 !== contraseña2) {
+                mensajeCoincidencia.textContent = "Las contraseñas no coinciden.";
+                mensajeCoincidencia.style.color = "red";
+                botonRegistro.disabled = true;
+            } else {
+                mensajeCoincidencia.textContent = "";
+                mensajeCoincidencia.style.color = "red";
+                if (tieneMayuscula && tieneNumero && tieneAsterisco) {
+                    botonRegistro.disabled = false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -4,35 +4,65 @@
 <html>
 <head>
     <title>Listar Productos</title>
-    <link rel="stylesheet" href="{% static 'css/listas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buscador.css' %}">
+    <!-- Agrega el enlace al archivo JavaScript de SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     {% include 'index.html' %}
     <h1>Listado de Productos</h1>
     <table>
         <tr>
-            <th>ID</th>
             <th>Nombre</th>
             <th>Código de Barras</th>
             <th>Precio</th>
             <th>Fecha de Caducidad</th>
             <th>Cantidad en Inventario</th>
             <th>Tipo de Producto</th>
+            <th>Modificar - Eliminar</th>
         </tr>
         {% for producto in productos %}
             <tr>
-                <td>{{ producto.id }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.codigo_barras }}</td>
                 <td>{{ producto.precio }}</td>
                 <td>{{ producto.fecha_caducidad }}</td>
                 <td>{{ producto.cantidad_inventario }}</td>
                 <td>{{ producto.tipo.nombre }}</td>
+                <td>
+                    <form id="eliminarForm" method="POST" action="{% url 'eliminar_producto' producto.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                        <a href="{% url 'modificar_producto' producto.id %}">✎</a>
+                        <a href="#" onclick="eliminarProducto(event)">🗑</a>
+                    </form>
+                </td>
             </tr>
         {% endfor %}
     </table>
+
+    <form action="{% url 'buscar_productos' %}" method="get">
+        <input type="text" name="consulta" placeholder="Buscar Productos">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <script>
+        function eliminarProducto(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: '¿Estás seguro de que deseas eliminar este producto?',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario confirma la eliminación, envía el formulario
+                    document.getElementById('eliminarForm').submit();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 {% endblock content %}
-
-

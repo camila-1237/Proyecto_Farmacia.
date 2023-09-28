@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Registrar Producto</title>
-    <link rel="stylesheet" href="{% static 'css/listas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/registrar.css' %}">
 </head>
 
 <body>
@@ -18,19 +18,21 @@
             </tr>
             <tr>
                 <th>Codigo barras:</th>
-                <td><input type="number" name="codigo_barras" required></td>
+                <td><input type="text" name="codigo_barras" maxlength="13" minlength="13"required></td>
             </tr>
             <tr>
                 <th>Precio:</th>
-                <td><input type="number" name="precio" step="0.1" required></td>
+                <td><input type="number" name="precio" step="100" min="0" required></td>
             </tr>
             <tr>
                 <th>Fecha caducidad:</th>
-                <td><input type="date" name="fecha_caducidad" required></td>
+                <td>
+                <input type="date" name="fecha_caducidad" required>
+                </td>
             </tr>
             <tr>
                 <th>Cantidad inventario:</th>
-                <td><input type="number" name="cantidad_inventario" required></td>
+                <td><input type="number" name="cantidad_inventario" min="0" required></td>
             </tr>
             <tr>
                 <th>Tipo:</th>

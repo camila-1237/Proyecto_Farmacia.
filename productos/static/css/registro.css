@@ -1,0 +1,73 @@
+/* Estilos para la página de registro */
+body {
+    background-image: url(../images/707b2d09-a1ff-41d7-b465-7cce14e010d0.jpeg);
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-weight: bold;
+}
+
+.registro-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 70px;
+    border-radius: 10px;
+    background-color: rgba(179, 184, 202, 0.5);
+    box-shadow: 0 0 10px rgba(143, 6, 6, 0.2);
+    border: 2px solid black;
+    box-shadow: 10px 10px 10px #464545;
+}
+
+
+
+h1 {
+    text-align: center;
+    color: #050505;
+}
+
+label {
+    max-width: 400px;
+    padding: -30px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #464545;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #3c32ca;
+    color: #ffffff;
+    border: none;
+    border-radius: 67px;
+    border-color: #2abe5b;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #999;
+}
+
+button[type="submit"]:hover {
+    background-color: #dd74e0;
+}
+
+.l {
+    position: absolute;
+    position: center;
+    top: 18px;
+    width: 100px;
+    height: 100px;
+    border-radius: 35%;
+    border: 1px solid #000000;
+    transform: translateX(150px);
+    box-shadow: 2px 2px 5px #504d4d;
+    
+}

@@ -5,33 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <title>Farmacia</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.desplegable > a').click(function () {
+                $(this).parent().toggleClass('abierto');
+            });
+            $(document).ready(function () {
+                $('.desplegable .flecha').click(function () {
+                    $(this).siblings('ul').toggle(); // Muestra u oculta el submenú
+                });
+            });
+            // JavaScript para mostrar y ocultar la barra de navegació
+
+        });
+    </script>
 </head>
+
 <body>
-    
     <div id="navegador">
         <img src="{% static 'images/Logo.png'%}" alt="Logo">
         <nav>
             <ul>
-                <li>
-                    <a id="texto" href="{% url 'listar_productos' %}">Listas Productos</a>
+                <li class="desplegable">
+                    <a id="texto" href="#">Tipos</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a id="texto" href="{% url 'agregar_tipo_producto' %}">Agregar</a>
+                        </li>
+                        <li>
+                            <a id="texto" href="{% url 'mostrar_tipos_productos' %}">Mostrar</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a id="texto" href="{% url 'registrar_producto' %}">Registrar Productos</a>
+                <li class="desplegable">
+                    <a id="texto" href="#">Productos</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a id="texto" href="{% url 'listar_productos' %}">Listas</a>
+                        </li>
+                        <li>
+                            <a id="texto" href="{% url 'registrar_producto' %}">Registrar</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a id="texto" href="{% url 'agregar_tipo_producto' %}">Agregar Tipos</a>
-                </li>
-                <li>
-                    <a id="texto" href="{% url 'mostrar_tipos_productos' %}">Mostrar Tipos</a>
-                </li> 
             </ul>
         </nav>
     </div>
-
-{% block content %}
-
-{%endblock%}
+    
+    <div id="contenido">
+        {% block content %}
+        <!-- Contenido de tu página -->
+        {% endblock %}
+    </div>
 </body>
 </html>
