@@ -11,27 +11,40 @@
 
     <script>
         $(document).ready(function () {
-            $('.desplegable > a').click(function () {
+            $('#mostrarNavegacion').click(function () {
+                $('#navegador').toggle();
+            });
+        
+            $('.desplegable > a').click(function (event) {
+                event.preventDefault(); 
                 $(this).parent().toggleClass('abierto');
+                $(this).siblings('.sub-menu').toggle(); 
             });
-            $(document).ready(function () {
-                $('.desplegable .flecha').click(function () {
-                    $(this).siblings('ul').toggle(); // Muestra u oculta el submenú
-                });
+        
+            $(document).on('click', function (event) {
+                if (!$(event.target).closest('#navegador').length && !$(event.target).is('#mostrarNavegacion')) {
+                    $('.sub-menu').hide(); 
+                }
             });
-            // JavaScript para mostrar y ocultar la barra de navegació
-
-        });
+        });      
     </script>
 </head>
 
 <body>
+    <div id="barraSuperior">
+        <span id="mostrarNavegacion" class="icono-tres-puntos">&#9776;</span>
+    </div>
     <div id="navegador">
         <img src="{% static 'images/Logo.png'%}" alt="Logo">
         <nav>
             <ul>
                 <li class="desplegable">
                     <a id="texto" href="#">Tipos</a>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <ul class="sub-menu">
                         <li>
                             <a id="texto" href="{% url 'agregar_tipo_producto' %}">Agregar</a>
@@ -49,6 +62,9 @@
                         </li>
                         <li>
                             <a id="texto" href="{% url 'registrar_producto' %}">Registrar</a>
+                            <li>
+                                <a id="texto" href="{% url 'alertas_productos' %}">Inventario Bajo</a>
+                            </li> 
                         </li>
                     </ul>
                 </li>
@@ -58,8 +74,45 @@
     
     <div id="contenido">
         {% block content %}
-        <!-- Contenido de tu página -->
+    
         {% endblock %}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const flechas = document.querySelectorAll('.flecha');
+
+            flechas.forEach(function (flecha) {
+                flecha.addEventListener('click', function () {
+                    const subMenu = flecha.parentElement.querySelector('.sub-menu');
+                    subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+      {% for m in messages %}
+        <script>
+           function mostrarAlerta() {
+        Swal.fire({
+          title: "Alerta",
+          text: "{{m}}",
+          icon: "warning",
+        });
+      }
+
+      // Llama a la función para mostrar la alerta inicialmente
+      mostrarAlerta();
+
+      // Establece un temporizador para mostrar la alerta cada 2 horas
+      setInterval(mostrarAlerta, 10000); // 2 horas en milisegundos
+        </script>
+      {% endfor %}
+    {% endif %}
+
+
+
+
 </body>
 </html>

@@ -8,6 +8,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .registro-container {
@@ -19,6 +20,7 @@ body {
     box-shadow: 0 0 10px rgba(143, 6, 6, 0.2);
     border: 2px solid black;
     box-shadow: 10px 10px 10px #464545;
+    
 }
 
 
@@ -26,11 +28,13 @@ body {
 h1 {
     text-align: center;
     color: #050505;
+    border-radius: 10px;
 }
 
 label {
     max-width: 400px;
     padding: -30px;
+    border-radius: 10px;
 }
 
 input[type="text"],
@@ -49,7 +53,7 @@ button[type="submit"] {
     background-color: #3c32ca;
     color: #ffffff;
     border: none;
-    border-radius: 67px;
+    border-radius: 10px;
     border-color: #2abe5b;
     cursor: pointer;
     box-shadow: 2px 2px 5px #999;
@@ -69,5 +73,6 @@ button[type="submit"]:hover {
     border: 1px solid #000000;
     transform: translateX(150px);
     box-shadow: 2px 2px 5px #504d4d;
+    border-radius: 10px;
     
 }

@@ -6,6 +6,7 @@ from .models import TipoProducto
 from datetime import datetime
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 def index_view(request):
     return render(request, 'index.html')
@@ -105,3 +106,17 @@ def buscar_productos(request):
         )
 
     return render(request, 'productos/buscador.html', {'resultados':resultados})
+
+def alertas_bajo_inventario(request):
+    if request.method == 'GET':
+        # Obtener los parámetros de consulta
+        parametros = request.GET
+
+        # Consultar la base de datos para encontrar productos con inventario bajo
+        parametros = Producto.objects.filter(
+            Q(cantidad_inventario__lte=10)
+        )
+
+        messages.success(request, "Inventario Bajo")
+
+    return render(request, 'productos/alertas.html', {'parametros': parametros})

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Alertas de Inventario Bajo</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/listas.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    {% include 'index.html' %}
+
+<!--BUSCADOR @JUANJO:D -->
+
+    <form action="{% url 'buscar_productos' %}" method="get">
+        <input type="text" name="consulta" placeholder="Buscar Productos">
+        <button type="submit">Buscar</button>
+    </form>
+
+
+{% block content %}
+
+{%endblock%}
+<script function></script>
+
+<h1>Productos que cuentan con un inventario Bajo</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Producto</th>
+                <th>Cantidad en Inventario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in parametros %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.cantidad_inventario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+    
+    </script>
+</body>
+</html>

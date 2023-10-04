@@ -1,17 +1,17 @@
 #navegador {
-    background: #dbd6d6; /* Cambia el color de fondo del sidebar */
-    color: white; /* Cambia el color del texto en el sidebar */
-    width: 250px; /* Ancho del sidebar */
+    background: linear-gradient(90deg, #fdecda, #ffffff); 
+    color: white; 
+    width: 250px; 
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Agrega una sombra */
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 }
 
 #contenido {
-    margin-left: 260px; /* Añade un margen izquierdo para dejar espacio para el sidebar */
+    margin-left: 260px;  
     padding: 20px;
 }
 
@@ -23,20 +23,20 @@
 #navegador a {
     text-decoration: none;
     color: inherit;
-    display: block; /* Hace que los enlaces ocupen todo el ancho del sidebar */
-    padding: 10px 0; /* Añade un espacio entre los enlaces */
+    display: block; 
+    padding: 10px 0; 
 }
 
 #navegador a:hover {
-    background: #555; /* Cambia el color de fondo al pasar el cursor por encima */
+    background: #b4adad; 
 }
 
 
-/* Resto de tus estilos CSS para la barra de navegación vertical aquí */
+
 
 
 #navegador img {
-    margin: 0 auto; /* Centra la imagen horizontalmente */
+    margin: 0 auto; 
 }
 
 #navegador nav ul {
@@ -60,11 +60,10 @@
 #navegador nav .sub-menu {
     display: none;
     position: absolute;
-    background-color: #333;
     min-width: 160px;
-    z-index: 1;
-    top: 0;
-    right: 100%; /* Coloca el submenú a la derecha del elemento principal */
+    z-index: 8;
+    top: 50px;
+    right: 100%; 
 }
 
 #navegador nav li:hover .sub-menu {
@@ -79,59 +78,101 @@
     padding: 10px 20px;
     color: white;
     text-decoration: none;
-    font-size: 16px; /* Ajusta el tamaño de fuente para el submenú si es necesario */
+    font-size: 16px; 
 }
 
 #navegador nav li.menu-item:hover > a:after {
     transform: rotate(90deg);
 }
 #navegador img {
-    margin-top: 10px; /* Ajusta el margen superior según tu preferencia */
+    margin-top: 60px; 
     height: 80px;
     width: 79px;
     border-radius: 30%;
     border: 1px solid black;
-    align-self: flex-end; /* Alinea la imagen en la parte inferior de la barra de navegación vertical */
+    align-self: flex-end; 
+    margin-left: 80px;
 }
-/* ... (estilos anteriores) ... */
+
+
 
 .desplegable > a::after {
-    content: " ▼"; /* Agrega la flecha después del enlace */
+    content: "\25BE"; 
     display: inline-block;
-    transition: transform 0.3s ease-in-out; 
+    transition: transform 0.1s ease-in-out;
+    margin-left: 5px;
+    font-weight: normal;
 }
 
 .desplegable.abierto > a::after {
     transform: rotate(180deg); 
 }
 
-/* ... (estilos posteriores) ... */
-/* ... (otros estilos) ... */
 
 .desplegable {
-    position: relative; /* Asegura que los elementos padres sean relativos */
+    position: static; 
 }
 
-/* Estilo para los submenús */
-/* Estilo para los submenús */
 .sub-menu {
-    display: none; /* Oculta inicialmente los submenús */
+    display: none; 
     position: absolute;
-    top: 100%; /* Coloca el submenú debajo del elemento padre */
+    top: 100%; 
     left: 0;
-    background-color: #333; /* Cambia el color de fondo del submenú */
-    width: 100%; /* Ajusta el ancho del submenú */
-    z-index: 1; /* Asegura que el submenú aparezca sobre otros elementos */
+    background-color: #ffc5f3; 
+    width: 100%; 
+    z-index: 1;
+    justify-content: center;
 }
 
-/* Estilo para los elementos del submenú */
 .sub-item {
     padding: 10px;
 }
 
-/* Muestra el submenú cuando el elemento padre está abierto */
 .desplegable.abierto .sub-menu {
     display: block;
 }
 
+#barraSuperior {
+    background-color: #ffffff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    z-index: 2; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
 
+.icono-tres-puntos {
+    color: #333;
+    position: absolute;
+    top: 3px; 
+    left: 8px; 
+    cursor: pointer;
+    font-size: 24px; 
+}
+
+
+
+
+#barraSuperior ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#barraSuperior ul li:last-child {
+    margin-right: 0;
+}
+
+#barraSuperior a {
+    text-decoration: none;
+    color: rgba(206, 197, 197, 0.664);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#barraSuperior a:hover {
+    text-decoration: underline;
+}

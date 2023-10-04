@@ -35,10 +35,10 @@
                 <td><input type="number" name="cantidad_inventario" min="0" required></td>
             </tr>
             <tr>
-                <th>Tipo:</th>
+                <th>Categoria:</th>
                 <td>
                     <select name="tipo" required id="tipo_select">
-                        <option value="" disabled selected>Seleccione un tipo</option>
+                        <option value="" disabled selected>Seleccione </option>
                         {% for tipo in tipos %}
                             <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
                         {% endfor %}

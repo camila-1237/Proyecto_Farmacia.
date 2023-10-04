@@ -4,8 +4,12 @@ h1 {
 }
 
 table {
-    border-collapse: collapse;
+
     width: 100%;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 10px;
+
     
 }
 
@@ -15,18 +19,22 @@ td {
     text-align: left;
     padding: 8px;
     text-align: center;
+    border-radius: 10px;
 
 }
 
 th {
     background-color: #f2f2f2;
+    border-radius: 10px;
 
 }
 
 
 input[type="text"],
 input[type="number"],
-input[type="date"] {
+input[type="date"]
+{
+    border-radius: 10px;
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -36,6 +44,7 @@ input[type="date"] {
 select {
     width: 100%;
     padding: 8px;
+    border-radius: 10px;
 }
 
 .Boton {
@@ -48,10 +57,12 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 button:hover {
     background-color: #4360FA;
+    border-radius: 10px;
 }
 
 /* listas.css */
@@ -62,8 +73,8 @@ form {
     margin: 0 auto;
     padding: 20px;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #161616;
+    border-radius: 10px;
 }
 
 /* Estilo para los elementos del formulario */
@@ -71,6 +82,7 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 input[type="text"],
@@ -78,12 +90,13 @@ input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #000000;
+    border-radius: 10px;
 }
 
 
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #5d6ec5;
+    border-radius: 10px;
 }
