@@ -50,7 +50,7 @@ input[type="password"] {
 button[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #3c32ca;
+    background-color: #dd74e0;
     color: #ffffff;
     border: none;
     border-radius: 10px;
@@ -60,7 +60,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #dd74e0;
+    background-color: #98a0eb;
 }
 
 .l {

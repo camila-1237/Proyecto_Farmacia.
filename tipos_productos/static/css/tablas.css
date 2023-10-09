@@ -8,15 +8,15 @@ h1{
     justify-content: center;
 }
 table {
-    border-collapse: collapse;
-    width: 50%
+    width: 60%
 }
 
 th, td {
-    border: 1px solid #814747;
+    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
     text-align: center;
+    border-radius: 20px;
 
 }
 
@@ -31,14 +31,14 @@ th {
 }
 button {
     padding: 10px 20px;
-    background-color: #4360FA;
+    background-color: #dd74e0;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #4360FA;
+    background-color: #cd7dd1;
 }
 input[type="text"] {
     position: absolute;
@@ -46,8 +46,8 @@ input[type="text"] {
     top: 220px;
     padding: 10px;
     width: 300px;
-    border: 1px solid #000000;
-    border-radius: 5px;
+    border: -10px solid #000000;
+    border-radius: 15px;
 }
 
 button[type="submit"] {
@@ -101,3 +101,26 @@ button[type="submit"] {
     top: 3px; /* Ajusta este valor para subir o bajar el campo de entrada */
     left: 535px
 }
+
+.icon-link {
+    text-decoration: none; /* Elimina la línea inferior */
+    display: inline-block; /* Hace que los elementos se muestren en línea */
+    margin-right: 10px; /* Espacio entre los iconos */
+}
+
+
+.icon-form {
+    display: inline-block; /* Hace que los formularios se muestren en línea */
+    margin-right: 10px; /* Espacio entre los iconos */
+}
+
+.Borrar {
+    text-decoration: none; /* Elimina la línea inferior */
+    display: inline-block; /* Hace que los elementos se muestren en línea */
+    margin-right: 10px; /* Espacio entre los iconos */
+}
+
+
+
+
+

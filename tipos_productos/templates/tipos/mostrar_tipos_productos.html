@@ -18,20 +18,17 @@
         <table>
             <tr>
                 <th>Categoria</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
+                <th>Opciones</th>
             </tr>
             {% for tipo in tipos_productos %}
                 <tr>
                     <td>{{ tipo.nombre }}</td>
                     <td>
-                        <a href="{% url 'modificar_tipo_producto' tipo.id %}" class="no-underline-emoji">🖊️</a>
-                    </td>
-                    <td>
-                        <form id="eliminarForm{{ tipo.id }}" method="POST" action="{% url 'eliminar_tipo_producto' tipo.id %}">
+                        <a href="{% url 'modificar_tipo_producto' tipo.id %}" class="L icon-link">🖊️</a>
+                        <form id="eliminarForm{{ tipo.id }}" method="POST" action="{% url 'eliminar_tipo_producto' tipo.id %}" class="icon-form">
                             {% csrf_token %}
                             <input type="hidden" name="tipo_id" value="{{ tipo.id }}">
-                            <a href="#" onclick="eliminarItem(event, 'eliminarForm{{ tipo.id }}', 'categoria')" class="no-underline-emoji">🗑</a>
+                            <a href="#" onclick="eliminarItem(event, 'eliminarForm{{ tipo.id }}', 'categoria')" class="Borrar">🗑</a>
                         </form>
                     </td>
                     
@@ -60,6 +57,27 @@
                     document.getElementById(formId).submit();
                 }
             });
+        }
+
+        function eliminarCategoria(event, tipo_id) {
+            event.preventDefault();
+
+            // Aquí puedes agregar una verificación si la categoría está asociada a algún producto.
+            let confirmacion;
+
+            // Supongamos que la variable 'categoriaAsociada' indica si la categoría está asociada a algún producto.
+            // Puedes ajustar esto según tu lógica real.
+            let categoriaAsociada = false;
+
+            if (categoriaAsociada) {
+                confirmacion = confirm("Esta categoría está asociada a productos. ¿Deseas eliminarla de todos modos?");
+            } else {
+                confirmacion = confirm("¿Estás seguro de que deseas eliminar esta categoria?");
+            }
+
+            if (confirmacion) {
+                document.getElementById('eliminarForm' + tipo_id).submit();
+            }
         }
     </script>
 </body>

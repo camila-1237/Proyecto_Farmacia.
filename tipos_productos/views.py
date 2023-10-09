@@ -43,16 +43,20 @@ def modificar_tipo_producto(request, tipo_producto_id):
 #         return redirect('mostrar_tipos_productos')
     
 #     return render(request, 'tipos/eliminar_tipo_producto.html', {'tipo_producto': tipo_producto})
-
-# # En tu archivo views.py
-
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
+from tipos_productos.models import TipoProducto
+from productos.models import Producto
+from django.shortcuts import render, redirect
 
 def eliminar_tipo_producto(request, tipo_producto_id):
     tipo_producto = get_object_or_404(TipoProducto, id=tipo_producto_id)
-    
+    productos_asociados = Producto.objects.filter(tipo=tipo_producto)
+
     if request.method == 'POST':
-        tipo_producto.delete()
-        return redirect('mostrar_tipos_productos')  # Reemplaza con tu URL de mostrar tipos de productos
-    
-    return render(request, 'tipos/eliminar_tipo_producto.html', {'tipo_producto': tipo_producto})
+        if productos_asociados.exists():
+            return render(request, 'tipos/no_se_puede_eliminar.html', {'tipo_producto': tipo_producto, 'productos_asociados': productos_asociados})
+        else:
+            tipo_producto.delete()
+            return redirect('mostrar_tipos_productos')
+
+    return render(request, 'tipos/eliminar_tipo_producto.html', {'tipo_producto': tipo_producto, 'productos_asociados': productos_asociados})

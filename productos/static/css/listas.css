@@ -51,7 +51,7 @@ select {
 
 button {
     padding: 10px 50px;
-    background-color: #4f61c4;
+    background-color: #dd74e0;
     color: white;
     border: none;
     cursor: pointer;
@@ -59,7 +59,7 @@ button {
 }
 
 button:hover {
-    background-color: #4360FA;
+    background-color: #cd7dd1;
     border-radius: 10px;
 }
 
@@ -97,5 +97,5 @@ input[type="password"] {
 
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #dd74e0;
 }

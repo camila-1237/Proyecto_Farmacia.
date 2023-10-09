@@ -52,6 +52,10 @@ def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'productos/listar_productos.html', {'productos': productos})
 
+def detalle_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    return render(request, 'productos/detalle_producto.html', {'producto': producto})
+
 def registrar_producto(request):
     tipos = TipoProducto.objects.all()  # Mueve esta línea aquí para asegurarte de que 'tipos' esté definida
 
@@ -107,16 +111,17 @@ def buscar_productos(request):
 
     return render(request, 'productos/buscador.html', {'resultados':resultados})
 
+
 def alertas_bajo_inventario(request):
     if request.method == 'GET':
-        # Obtener los parámetros de consulta
         parametros = request.GET
-
-        # Consultar la base de datos para encontrar productos con inventario bajo
         parametros = Producto.objects.filter(
-            Q(cantidad_inventario__lte=10)
-        )
+            Q(cantidad_inventario__lte=10)     
+        )   
 
-        messages.success(request, "Inventario Bajo")
+        if parametros.exists():
+            messages.success(request, "Productos con inventario bajo")
+            
+        #else: messages.success(request, "No hay productos con bajo inventario")
 
     return render(request, 'productos/alertas.html', {'parametros': parametros})

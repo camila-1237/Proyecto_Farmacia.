@@ -3,91 +3,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <title>Listar Productos</title>
     <link rel="stylesheet" href="{% static 'css/buscador.css' %}">
     <!-- Agrega el enlace al archivo JavaScript de SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+    
     {% include 'index.html' %}
+    <!--BUSCADOR @JUANJO:D -->
+
+    <form action="{% url 'buscar_productos' %}" method="get">
+        <input type="text" name="consulta" placeholder="Buscar Productos">
+        <button type="submit">Buscar</button>
+    </form>
+
     <h1>Listado de Productos</h1>
     <table>
         <tr>
             <th>Nombre</th>
-            <th>Código de Barras</th>
             <th>Precio</th>
-            
-            <th></th>
-            <td>
-              <a href="#" onclick="mostrarDetalle(event, {{ producto.id }})">Ver Detalle</a>
-            </td>
-            
+            <th>Inven</th>
+            <th>Categoria</th>
+            <th>Detalles</th>
         </tr>
         {% for producto in productos %}
             <tr>
                 <td>{{ producto.nombre }}</td>
-                <td>{{ producto.codigo_barras }}</td>
-                <td>{{ producto.precio }}</td>
-               
-                <td>
-                    <form id="eliminarForm" method="POST" action="{% url 'eliminar_producto' producto.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                        <a href="{% url 'modificar_producto' producto.id %}" class="no-underline">✎</a>
-                        <a href="#" onclick="eliminarProducto(event)" class="no-underline">🗑</a>
-                    </form>
-                </td>
-                
+                <td>${{ producto.precio }}</td>
+                <td>{{ producto.cantidad_inventario }}</td>
+                <td>{{ producto.tipo.nombre }}</td>
+                <td><a href="{% url 'detalle_producto' producto.id %}">Ver detalles</a></td>
             </tr>
         {% endfor %}
+        
+
     </table>
-
-    <div id="formularioBusqueda">
-        <form action="{% url 'buscar_productos' %}" method="get">
-            <input type="text" name="consulta" placeholder="Buscar Productos">
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
-    
-
-    <script>
-        function eliminarProducto(event) {
-            event.preventDefault();
-            
-            Swal.fire({
-                title: '¿Estás seguro de que deseas eliminar este producto?',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, Eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('eliminarForm').submit();
-                }
-            });
-        }
-    </script>
-    <td>
-        <a href="#" onclick="mostrarDetalles(event, {{ producto.id }})">Ver Detalles</a>
-    </td>
-
-    <tr id="detalles_{{ producto.id }}" style="display: none;">
-        <td colspan="4">
-            <strong>Fecha de Caducidad:</strong> {{ producto.fecha_caducidad }}<br>
-            <strong>Cantidad en Inventario:</strong> {{ producto.cantidad_inventario }}<br>
-            <strong>Tipo de Producto:</strong> {{ producto.tipo.nombre }}
-        </td>
-    </tr>
-    <script>
-        function mostrarDetalles(event, productoId) {
-            event.preventDefault();
-            const detallesRow = document.getElementById(`detalles_${productoId}`);
-            if (detallesRow.style.display === 'none') {
-                detallesRow.style.display = 'table-row';
-            } else {
-                detallesRow.style.display = 'none';
-            }
-        }
-    </script>
         
 </body>
 </html>

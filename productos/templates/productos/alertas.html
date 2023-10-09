@@ -13,13 +13,6 @@
 <body>
     {% include 'index.html' %}
 
-<!--BUSCADOR @JUANJO:D -->
-
-    <form action="{% url 'buscar_productos' %}" method="get">
-        <input type="text" name="consulta" placeholder="Buscar Productos">
-        <button type="submit">Buscar</button>
-    </form>
-
 
 {% block content %}
 
