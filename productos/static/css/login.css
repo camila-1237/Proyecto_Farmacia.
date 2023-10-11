@@ -1,6 +1,6 @@
 /* Estilos para la página de inicio de sesión */
 body {
-    background-image: url(../images/707b2d09-a1ff-41d7-b465-7cce14e010d0.jpeg);
+    background-image: url(../images/drogueria.jpeg);
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     background-size: cover;
@@ -44,18 +44,17 @@ input[type="password"] {
     width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 10px 10px 10px #464545;
 }
 
 button[type="submit"] {
-    width: 100%;
+    width: 101%;
     padding: 10px;
     background-color: #dd5d8e;
     color: #ffffff;
     border: none;
-    border-radius: 67px;
-    border-color: #2abe5b;
+    border-radius: 15px;
     cursor: pointer;
     box-shadow: 2px 2px 5px #999;
 }
@@ -83,3 +82,19 @@ h6{
     font-size: 25px;
 }
 
+.password-container {
+    position: relative;
+    width: 95%;
+}
+
+#password {
+    padding-right: 30px; /* Ajusta el espaciado a la derecha del campo de contraseña */
+}
+
+#toggle-password {
+    position: absolute;
+    top: 50%;
+    right: -10px; 
+    transform: translateY(-50%);
+    cursor: pointer;
+}

@@ -8,7 +8,11 @@ h1{
     justify-content: center;
 }
 table {
-    width: 60%
+    width: 60%;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 10px;
+
 }
 
 th, td {
@@ -16,12 +20,12 @@ th, td {
     text-align: left;
     padding: 8px;
     text-align: center;
-    border-radius: 20px;
-
+    border-radius: 10px;
 }
 
 th {
     background-color: #f2f2f2;
+
 
 }
 
@@ -31,14 +35,14 @@ th {
 }
 button {
     padding: 10px 20px;
-    background-color: #dd74e0;
+    background-color:  #eb38a0;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #cd7dd1;
+    background-color: #ec8cf0;
 }
 input[type="text"] {
     position: absolute;
@@ -46,12 +50,12 @@ input[type="text"] {
     top: 220px;
     padding: 10px;
     width: 300px;
-    border: -10px solid #000000;
-    border-radius: 15px;
+    border: 1px solid #000000;
+    border-radius: 5px;
 }
 
 button[type="submit"] {
-    background-color: #cc369f;
+    background-color:  #ec8cf0;
     position: absolute;
     left: 899px;
     top: 220px;
@@ -91,10 +95,10 @@ button[type="submit"] {
 
 #formularioBusqueda button[type="submit"] {
     padding: 8px 16px;
-    background-color: #be26be;
+    background-color:  #eb38a0;;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     border: 1px solid #000; /* Borde negro */
     position: absolute;
@@ -119,8 +123,3 @@ button[type="submit"] {
     display: inline-block; /* Hace que los elementos se muestren en línea */
     margin-right: 10px; /* Espacio entre los iconos */
 }
-
-
-
-
-

@@ -34,7 +34,7 @@ input[type="text"],
 input[type="number"],
 input[type="date"]
 {
-    border-radius: 10px;
+    border-radius: 15px;
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -57,12 +57,12 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 button:hover {
-    background-color: #ec8cf0;
-    border-radius: 10px;
+    background-color: #e25aae;
+    border-radius: 15px;
 }
 
 /* listas.css */
@@ -100,3 +100,4 @@ button[type="submit"]:hover {
     background-color: #dd9bba;
     border-radius: 10px;
 }
+

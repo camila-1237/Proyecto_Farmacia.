@@ -3,30 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
     <title>Listar Productos</title>
     <link rel="stylesheet" href="{% static 'css/buscador.css' %}">
     <!-- Agrega el enlace al archivo JavaScript de SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    
     {% include 'index.html' %}
-    <!--BUSCADOR @JUANJO:D -->
-
-    <form action="{% url 'buscar_productos' %}" method="get">
-        <input type="text" name="consulta" placeholder="Buscar Productos">
-        <button type="submit">Buscar</button>
-    </form>
-
     <h1>Listado de Productos</h1>
     <table>
         <tr>
@@ -45,10 +28,32 @@
                 <td><a href="{% url 'detalle_producto' producto.id %}">Ver detalles</a></td>
             </tr>
         {% endfor %}
-        
-
     </table>
-        
+
+    <div id="formularioBusqueda">
+        <form action="{% url 'buscar_productos' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar Productos">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    
+
+    <script>
+        function eliminarProducto(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: '¿Estás seguro de que deseas eliminar este producto?',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('eliminarForm').submit();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 {% endblock content %}

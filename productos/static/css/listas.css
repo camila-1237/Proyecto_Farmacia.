@@ -5,11 +5,11 @@ h1 {
 }
 
 table {
- 
-    border-collapse: collapse;
-    width: 70%;
-    margin-left: 300px; 
-    margin-right: 5px; 
+
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 10px;
 }
 
 th,
@@ -33,7 +33,6 @@ input[type="number"],
 input[type="date"] {
     width: 100%;
     padding: 8px;
-    box-sizing: border-box;
     border-radius: 10px;
 }
 
@@ -72,7 +71,6 @@ form {
     padding: 50px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    border-radius: 5px;
     border-radius: 10px;
 }
 
