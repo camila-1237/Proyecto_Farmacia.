@@ -32,15 +32,19 @@ input[type="text"],
 input[type="number"],
 input[type="date"] {
     width: 100%;
-    padding: 8px;
-    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    border-radius: 15px;
 }
 
 
 select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 10px;
+    width: 108%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    border-radius: 15px;
 }
 
 .Boton {
@@ -49,17 +53,18 @@ select {
 }
 
 button {
+    width: 108%;
     padding: 10px 50px;
     background-color: #dd74e0;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 button:hover {
     background-color: #cd7dd1;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 /* listas.css */
@@ -71,10 +76,9 @@ form {
     padding: 50px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
-/* Estilo para los elementos del formulario */
 label {
     
     display: block;
@@ -89,7 +93,7 @@ input[type="password"] {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 

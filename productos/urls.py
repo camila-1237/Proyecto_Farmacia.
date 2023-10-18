@@ -15,6 +15,7 @@ urlpatterns = [
     path('buscar/', buscar_productos, name='buscar_productos'),
     path('alertas/', views.alertas_bajo_inventario, name='alertas_productos'),
     path('detalle/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
+    path('cerrar_sesion/', views.cerrar_sesion, name='cerrar_sesion'),
 ]
 
 

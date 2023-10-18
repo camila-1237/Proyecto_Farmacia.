@@ -7,6 +7,13 @@ from datetime import datetime
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('home')  # Redirige al usuario a la página de inicio o a donde desees.
+
 
 def index_view(request):
     return render(request, 'index.html')

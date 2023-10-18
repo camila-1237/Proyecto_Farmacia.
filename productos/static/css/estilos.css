@@ -1,6 +1,6 @@
 #navegador {
     background: linear-gradient(90deg, #fdecda, #ffffff); 
-    color: white; 
+    color: rgb(0, 0, 0); 
     width: 190px; /* Reduzco el ancho a 150px */
     position: fixed;
     top: 0;
@@ -11,25 +11,9 @@
 }
 
 
-#contenido {
-    margin-left: 260px;  
-    padding: 20px;
-}
-
-#navegador ul {
-    list-style: none;
-    padding: 0;
-}
-
-#navegador a {
-    text-decoration: none;
-    color: inherit;
-    display: block; 
-    padding: 10px 0; 
-}
 
 #navegador a:hover {
-    background: #b4adad; 
+    background:  #e25aae;
 }
 
 
@@ -58,31 +42,20 @@
 
 #navegador nav .sub-menu {
     display: none;
+    background:#dd9bba;
     position: absolute;
-    min-width: 160px;
-    z-index: 8;
-    top: 50px;
-    right: 100%; 
+    top: 50px; 
+    left: 0px; 
 }
 
-#navegador nav li:hover .sub-menu {
-    display: block;
-}
-
-#navegador nav .sub-menu li {
-    width: 100%;
-}
 
 #navegador nav .sub-menu li a {
     padding: 10px 20px;
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 16px; 
 }
 
-#navegador nav li.menu-item:hover > a:after {
-    transform: rotate(90deg);
-}
 #navegador img {
     margin-top: 60px; 
     height: 80px;
@@ -168,7 +141,7 @@
 
 #barraSuperior a {
     text-decoration: none;
-    color: rgba(206, 197, 197, 0.664);
+    color: rgba(238, 168, 217, 0.664);
     font-weight: bold;
     font-size: 16px;
 }
