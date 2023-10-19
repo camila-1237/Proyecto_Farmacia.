@@ -1,4 +1,5 @@
 {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
             </tr>
             <tr>
                 <th>Codigo barras:</th>
-                <td><input type="text" name="codigo_barras" maxlength="13" minlength="13"required></td>
+                <td><input type="text" name="codigo_barras" maxlength="13" minlength="13" required></td>
             </tr>
             <tr>
                 <th>Precio:</th>
@@ -27,7 +28,10 @@
             <tr>
                 <th>Fecha caducidad:</th>
                 <td>
-                <input type="date" name="fecha_caducidad" required>
+                    <input type="date" name="fecha_caducidad" min="{{ hoy }}" required>
+                    {% if form.fecha_caducidad.errors %}
+                        <span style="color: red;">{{ form.fecha_caducidad.errors }}</span>
+                    {% endif %}
                 </td>
             </tr>
             <tr>
@@ -48,11 +52,8 @@
         </table>
         <br>
         <div class="Boton">
-        <button type="submit">Registrar</button>
+            <button type="submit">Registrar</button>
         </div>
     </form>
-{% block content %}
-
-{% endblock content %}
 </body>
 </html>

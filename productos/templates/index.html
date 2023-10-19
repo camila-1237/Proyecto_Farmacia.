@@ -34,6 +34,7 @@
     
     <div id="barraSuperior">
         <span id="mostrarNavegacion" class="icono-tres-puntos">&#9776;</span>
+        <a href="{% url 'cerrar_sesion' %}" class="cerrar-sesion">Cerrar Sesión</a>
     </div>
     <div id="navegador">
         <img src="{% static 'images/Logo.png'%}" alt="Logo">
@@ -65,6 +66,7 @@
                             <a id="texto" href="{% url 'registrar_producto' %}">Registrar</a>
                             <li>
                                 <a id="texto" href="{% url 'alertas_productos' %}">Inventario Bajo</a>
+                                
                             </li> 
                         </li>
                     </ul>
@@ -107,8 +109,8 @@
       // Llama a la función para mostrar la alerta inicialmente
       mostrarAlerta();
 
-      // Establece un temporizador para mostrar la alerta cada 2 horas
-      setInterval(mostrarAlerta, 10000); // 2 horas en milisegundos
+     
+      setInterval(mostrarAlerta, 10000); 
         </script>
       {% endfor %}
     {% endif %}

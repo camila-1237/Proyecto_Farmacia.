@@ -1,7 +1,7 @@
 #navegador {
     background: linear-gradient(90deg, #fdecda, #ffffff); 
     color: rgb(0, 0, 0); 
-    width: 190px; /* Reduzco el ancho a 150px */
+    width: 150px; 
     position: fixed;
     top: 0;
     left: 0;
@@ -63,7 +63,7 @@
     border-radius: 30%;
     border: 1px solid black;
     align-self: flex-end; 
-    margin-left: 55px;
+    margin-left: 30px;
     
 }
 
@@ -108,7 +108,7 @@
 #barraSuperior {
     background-color: #ffffff;
     color: white;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     position: fixed; 
     top: 0; 
@@ -141,10 +141,16 @@
 
 #barraSuperior a {
     text-decoration: none;
-    color: rgba(238, 168, 217, 0.664);
+    color: rgba(0, 0, 0, 0.664);
     font-weight: bold;
     font-size: 16px;
+    margin-left: auto; 
+    display: flex;
+    justify-content: flex-end; /* Alinea elementos al extremo derecho */
+    align-items: center;
+    margin-right: 15px
 }
+
 
 #barraSuperior a:hover {
     text-decoration: underline;

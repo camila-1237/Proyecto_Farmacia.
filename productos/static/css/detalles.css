@@ -5,11 +5,9 @@ h1 {
 
 table {
     border-collapse: collapse;
-    width: 20%;
-    margin-left: 220px; 
     margin-right: 5px; 
-    width: 80%;
-    border-radius: 25px;
+    width: 90%;
+    border-radius: 15px;
     border-collapse: separate;
     border-spacing: 10px;
     
@@ -36,4 +34,21 @@ th {
 }
 .La{
     text-decoration: none;
+}
+#navegador {
+    background: linear-gradient(90deg, #fdecda, #ffffff);
+    color: rgb(0, 0, 0);
+    width: 150px; /* Ancho original de la barra de navegación */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: width 0.3s; /* Transición del ancho para la animación */
+}
+
+/* Estilo para la tabla cuando la navegación está abierta */
+.tabla-navegacion-abierta {
+    margin-left: 50px; /* Ajusta el margen izquierdo cuando la navegación está abierta */
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Venta</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <br>
+    <br>
+    <br>
+    <h1>Crear Venta</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ venta_form.as_p }}
+        <input type="submit" value="Guardar y Finalizar Venta">
+    </form>
+    
+</body>
+</html>

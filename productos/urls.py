@@ -3,6 +3,7 @@ from .views import listar_productos, registrar_producto, index, modificar_produc
 from . import views
 from django.contrib.auth.decorators import login_required
 
+
 urlpatterns = [
     path('', views.login_view, name='login'),  # Página de inicio de sesión como página principal
     path('base/', base, name='hogar'),
@@ -15,7 +16,10 @@ urlpatterns = [
     path('buscar/', buscar_productos, name='buscar_productos'),
     path('alertas/', views.alertas_bajo_inventario, name='alertas_productos'),
     path('detalle/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
-    path('cerrar_sesion/', views.cerrar_sesion, name='cerrar_sesion'),
+    path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
+    path('crear/', views.crear_venta, name='crear_venta'),
+    path('agregar_transaccion/<int:venta_id>/', views.agregar_transaccion, name='agregar_transaccion'),
+    path('mostrar_ventas/', views.mostrar_ventas, name='mostrar_ventas'),
 ]
 
 

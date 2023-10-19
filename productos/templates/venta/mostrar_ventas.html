@@ -1,0 +1,35 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/ventas.css' %}">
+    <title>Mostrar Ventas</title>
+</head>
+<body>
+    {% include 'index.html' %}
+    <br>
+    <br>
+    <br>
+    <h1>Listado de Ventas</h1>
+    
+    {% for venta in ventas %}
+        <div class="venta">
+            <h2>Venta {{ venta.id_venta }}</h2>
+            <p>Fecha de Venta: {{ venta.fecha_venta }}</p>
+            <p>Total de Venta: ${{ venta.calcular_total }}</p>
+            
+            <h3>Transacciones:</h3>
+            <ul>
+                {% for transaccion in venta.transaccion_set.all %}
+                    <li>Producto: {{ transaccion.id_producto.nombre }}, Cantidad: {{ transaccion.cantidad }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</body>
+</html>
+{% endblock content %}

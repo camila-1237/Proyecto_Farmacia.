@@ -4,61 +4,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    <title>Document</title>
 </head>
 <body>
     {% include 'index.html' %}
     <h1>Detalles de Productos</h1>
-<table>
-    <tr>
-        <th>Nombre</th>
-        <th>Cod. Barras</th>
-        <th>Precio</th>
-        <th>Fecha de Caducidad</th>
-        <th>Cant. Inventario</th>
-        <th>Categoria</th>
-        <th>Acciones</th>
-    </tr>
-    <tr>
-        <td>{{ producto.nombre }}</td>
-        <td>{{ producto.codigo_barras }}</td>
-        <td>${{ producto.precio }} COP</td>
-        <td>{{ producto.fecha_caducidad|date:"M. d, Y" }}</td>
-        <td>{{ producto.cantidad_inventario }}</td>
-        <td>{{ producto.tipo.nombre }}</td>
-        <td>
-            <form id="eliminarForm" method="POST" action="{% url 'eliminar_producto' producto.id %}">
-                {% csrf_token %}
-                <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                <a href="{% url 'modificar_producto' producto.id %}" class="La">🖊️</a>
-                <a href="#" onclick="eliminarProducto(event)" class="B">🗑</a>
-            </form>
-        </td>
-    </tr>
-</table>
-    
-
-    <script>
-        function eliminarProducto(event) {
-            event.preventDefault();
-            
-            Swal.fire({
-                title: '¿Estás seguro de que deseas eliminar este producto?',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, Eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('eliminarForm').submit();
-                }
-            });
-        }
-    </script>
+    <table id="tablaProductos">
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Cod. Barras</th>
+            <th>Precio</th>
+            <th>Fecha de Caducidad</th>
+            <th>Cant. Inventario</th>
+            <th>Categoria</th>
+            <th>Acciones</th>
+        </tr>
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.codigo_barras }}</td>
+            <td>${{ producto.precio }} COP</td>
+            <td>{{ producto.fecha_caducidad|date:"M. d, Y" }}</td>
+            <td>{{ producto.cantidad_inventario }}</td>
+            <td>{{ producto.tipo.nombre }}</td>
+            <td>
+                <form id="eliminarForm" method="POST" action="{% url 'eliminar_producto' producto.id_producto %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                    <a href="{% url 'modificar_producto' producto.id_producto %}" class="La">🖊️</a>
+                    <a href="#" onclick="eliminarProducto(event)" class="B">🗑</a>
+                </form>
+            </td>
+        </tr>
+    </table>
 </body>
+<script>
+    function eliminarProducto(event) {
+        event.preventDefault();
+        
+        Swal.fire({
+            title: '¿Estás seguro de que deseas eliminar este producto?',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('eliminarForm').submit();
+            }
+        });
+    }
+    const tablaProductos = document.getElementById('tablaProductos');
+        const contenidoTabla = document.getElementById('contenidoTabla');
+        const mostrarNavegacion = document.getElementById('mostrarNavegacion');
+        const navegacion = document.getElementById('navegador');
+        
+        navegacion.style.width = '150px';
+        tablaProductos.style.width = '90%';
+        
+        mostrarNavegacion.addEventListener('click', function (event) {
+            event.preventDefault();
+        
+            if (navegacion.style.width === '150px') {
+                navegacion.style.width = '0';
+                tablaProductos.classList.remove('tabla-navegacion-abierta');
+                contenidoTabla.classList.remove('tabla-navegacion-abierta');
+            } else {
+                navegacion.style.width = '150px';
+                tablaProductos.classList.add('tabla-navegacion-abierta');
+                contenidoTabla.classList.add('tabla-navegacion-abierta');
+            }
+        });
+</script>
 </html>
 {% endblock content %}

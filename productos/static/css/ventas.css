@@ -1,0 +1,38 @@
+/* ventas.css */
+
+/* Estilos generales para todo el documento */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilos para el contenedor de cada venta */
+.venta {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los encabezados de las ventas */
+.venta h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los detalles de las ventas (fecha y total) */
+.venta p {
+    margin: 0;
+}
+
+/* Estilos para la lista de transacciones */
+.venta ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilos para cada elemento de la lista de transacciones */
+.venta ul li {
+    margin-bottom: 5px;
+}
