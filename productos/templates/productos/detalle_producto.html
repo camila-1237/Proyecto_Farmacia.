@@ -2,17 +2,15 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     {% include 'index.html' %}
     <h1>Detalles de Productos</h1>
     <table id="tablaProductos">
-    <table>
         <tr>
             <th>Nombre</th>
             <th>Cod. Barras</th>
@@ -39,43 +37,48 @@
             </td>
         </tr>
     </table>
-</body>
-<script>
-    function eliminarProducto(event) {
-        event.preventDefault();
-        
-        Swal.fire({
-            title: '¿Estás seguro de que deseas eliminar este producto?',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, Eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('eliminarForm').submit();
-            }
-        });
-    }
-    const tablaProductos = document.getElementById('tablaProductos');
-        const contenidoTabla = document.getElementById('contenidoTabla');
-        const mostrarNavegacion = document.getElementById('mostrarNavegacion');
-        const navegacion = document.getElementById('navegador');
-        
-        navegacion.style.width = '150px';
-        tablaProductos.style.width = '90%';
-        
-        mostrarNavegacion.addEventListener('click', function (event) {
+    <script>
+        function eliminarProducto(event) {
             event.preventDefault();
-        
-            if (navegacion.style.width === '150px') {
-                navegacion.style.width = '0';
-                tablaProductos.classList.remove('tabla-navegacion-abierta');
-                contenidoTabla.classList.remove('tabla-navegacion-abierta');
-            } else {
-                navegacion.style.width = '150px';
-                tablaProductos.classList.add('tabla-navegacion-abierta');
-                contenidoTabla.classList.add('tabla-navegacion-abierta');
-            }
+            
+            Swal.fire({
+                title: '¿Estás seguro de que deseas eliminar este producto?',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('eliminarForm').submit();
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tablaProductos = document.getElementById('tablaProductos');
+            const contenidoTabla = document.getElementById('contenidoTabla');
+            const mostrarNavegacion = document.getElementById('mostrarNavegacion');
+            const navegacion = document.getElementById('navegador');
+
+            navegacion.style.width = '150px';
+            tablaProductos.style.width = '90%';
+
+            mostrarNavegacion.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                if (navegacion.style.width === '150px') {
+                    navegacion.style.width = '0';
+                    tablaProductos.style width = '100%';
+                    tablaProductos.classList.remove('tabla-navegacion-abierta');
+                    contenidoTabla.classList.remove('tabla-navegacion-abierta');
+                } else {
+                    navegacion.style.width = '150px';
+                    tablaProductos.style.width = 'calc(100% - 150px)';
+                    tablaProductos.classList.add('tabla-navegacion-abierta');
+                    contenidoTabla.classList.add('tabla-navegacion-abierta');
+                }
+            });
         });
-</script>
+    </script>
+</body>
 </html>
 {% endblock content %}

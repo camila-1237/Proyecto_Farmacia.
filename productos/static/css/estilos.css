@@ -10,7 +10,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 }
 
-
+#formularioBusqueda input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    border: none;
+    border: 2px solid #000;
+    position: absolute;
+    top: 3px;
+    left: 90px;
+}
 
 #navegador a:hover {
     background:  #e25aae;

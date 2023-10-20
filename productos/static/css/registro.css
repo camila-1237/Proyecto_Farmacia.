@@ -1,7 +1,6 @@
-/* Estilos para la página de registro */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 body {
     background-image: url(../images/drogueria.jpeg);
-    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,7 +13,7 @@ body {
 .registro-container {
     max-width: 400px;
     margin: 0 auto;
-    padding: 70px;
+    padding: 40px;
     border-radius: 10px;
     background-color: rgba(179, 184, 202, 0.5);
     box-shadow: 0 0 10px rgba(143, 6, 86, 0.2);
@@ -26,6 +25,7 @@ h1 {
     text-align: center;
     color: #050505;
     border-radius: 10px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 label {
@@ -33,6 +33,7 @@ label {
     padding: 10px;
     border-radius: 10px;
     display: block;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 input[type="text"],
@@ -43,6 +44,7 @@ input[type="password"] {
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 10px 10px 10px #464545;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 button[type="submit"] {
@@ -54,6 +56,7 @@ button[type="submit"] {
     border-radius: 15px;
     cursor: pointer;
     box-shadow: 2px 2px 5px #999;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 button[type="submit"]:hover {
@@ -126,4 +129,8 @@ button[type="submit"]:hover {
     outline: none;
     background-color: #e289b7;
     cursor: pointer;
+}
+
+.f{
+    font-family: 'Josefin Sans', sans-serif;
 }

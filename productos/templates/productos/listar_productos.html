@@ -12,7 +12,13 @@
 
 <body>
     {% include 'index.html' %}
-
+    <style>
+        #tablaProductos {
+            width: 100%; /* Establece el ancho en 100% para ocupar todo el espacio disponible */
+            transition: width 0.3s; /* Mantén la transición para un efecto suave */
+        }
+    </style>
+    
     <h1>Listado de Productos</h1>   
 
     <table id="tablaProductos">
@@ -69,15 +75,16 @@
         
             if (navegacion.style.width === '150px') {
                 navegacion.style.width = '0';
+                tablaProductos.style.width = '100%';
                 tablaProductos.classList.remove('tabla-navegacion-abierta');
                 contenidoTabla.classList.remove('tabla-navegacion-abierta');
             } else {
                 navegacion.style.width = '150px';
+                tablaProductos.style.width = 'calc(100% - 150px)'; 
                 tablaProductos.classList.add('tabla-navegacion-abierta');
                 contenidoTabla.classList.add('tabla-navegacion-abierta');
             }
         });
-
 
     </script>
 </body>

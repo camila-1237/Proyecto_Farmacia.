@@ -109,15 +109,12 @@ def buscar_productos(request):
     if request.method == 'GET':
         consulta = request.GET.get('consulta')
         resultados = Producto.objects.filter(
-            Q(id__icontains=consulta) |
-            Q(nombre__icontains=consulta) |
-            Q(codigo_barras__icontains=consulta) |
-            Q(precio__icontains=consulta) |
-            Q(cantidad_inventario__icontains=consulta) |
-            Q(tipo__nombre__icontains=consulta)
+            Q(nombre__icontains=consulta) |  
+            Q(codigo_barras__icontains=consulta)  
+            
         )
 
-    return render(request, 'productos/buscador.html', {'resultados':resultados})
+    return render(request, 'productos/buscador.html', {'resultados': resultados})
 
 
 def alertas_bajo_inventario(request):

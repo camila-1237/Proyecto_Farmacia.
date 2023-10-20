@@ -1,4 +1,4 @@
-/* Estilos para la página de inicio de sesión */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 body {
     background-image: url(../images/drogueria.jpeg);
     font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@ body {
 .login-container {
     max-width: 400px;
     margin: 0 auto;
-    padding: 70px;
+    padding: 40px;
     background-color: rgba(179, 184, 202, 0.5);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(143, 6, 6, 0.2);
@@ -32,11 +32,13 @@ h1 {
     color: #000000;
     text-align: center;
     font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 input[type="text"],
@@ -57,10 +59,12 @@ button[type="submit"] {
     border-radius: 15px;
     cursor: pointer;
     box-shadow: 2px 2px 5px #999;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 button[type="submit"]:hover {
     background-color: #dd74e0;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .l{
     position: static;
@@ -80,6 +84,7 @@ h6{
     color: rgb(0, 0, 0);
     text-align: center;
     font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .password-container {
@@ -97,4 +102,11 @@ h6{
     right: -10px; 
     transform: translateY(-50%);
     cursor: pointer;
+}
+.d{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+p{
+    font-family: 'Josefin Sans', sans-serif;
 }
