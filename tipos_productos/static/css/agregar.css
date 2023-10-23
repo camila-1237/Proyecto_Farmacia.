@@ -4,6 +4,7 @@ h1{
     position: relative;
     top: 100px;
     left: 90px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .container{
@@ -15,6 +16,7 @@ table {
     border-radius: 10px;
     border-collapse: separate;
     border-spacing: 10px;
+    font-family: 'Josefin Sans', sans-serif;
 
 }
 
@@ -36,6 +38,7 @@ th {
 .boton{
     text-align: center;
     margin-top: 15px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 button {
     padding: 10px 20px;
@@ -43,6 +46,7 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
     
 }
 

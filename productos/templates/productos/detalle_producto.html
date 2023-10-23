@@ -5,7 +5,14 @@
 <html lang="es">
 <head>
     <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Agrega el enlace al archivo JavaScript de SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        #tablaProductos {
+            width: 100%; /* Establece el ancho en 100% para ocupar todo el espacio disponible */
+            transition: width 0.3s; /* Mantén la transición para un efecto suave */
+        }
+    </style>
 </head>
 <body>
     {% include 'index.html' %}
@@ -51,32 +58,29 @@
                     document.getElementById('eliminarForm').submit();
                 }
             });
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const tablaProductos = document.getElementById('tablaProductos');
-            const contenidoTabla = document.getElementById('contenidoTabla');
-            const mostrarNavegacion = document.getElementById('mostrarNavegacion');
-            const navegacion = document.getElementById('navegador');
-
-            navegacion.style.width = '150px';
-            tablaProductos.style.width = '90%';
-
-            mostrarNavegacion.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                if (navegacion.style.width === '150px') {
-                    navegacion.style.width = '0';
-                    tablaProductos.style width = '100%';
-                    tablaProductos.classList.remove('tabla-navegacion-abierta');
-                    contenidoTabla.classList.remove('tabla-navegacion-abierta');
-                } else {
-                    navegacion.style.width = '150px';
-                    tablaProductos.style.width = 'calc(100% - 150px)';
-                    tablaProductos.classList.add('tabla-navegacion-abierta');
-                    contenidoTabla.classList.add('tabla-navegacion-abierta');
-                }
-            });
+        } 
+        const tablaProductos = document.getElementById('tablaProductos');
+        const contenidoTabla = document.getElementById('contenidoTabla');
+        const mostrarNavegacion = document.getElementById('mostrarNavegacion');
+        const navegacion = document.getElementById('navegador');
+        
+        navegacion.style.width = '150px';
+        tablaProductos.style.width = '90%';
+        
+        mostrarNavegacion.addEventListener('click', function (event) {
+            event.preventDefault();
+        
+            if (navegacion.style.width === '150px') {
+                navegacion.style.width = '0';
+                tablaProductos.style.width = '100%';
+                tablaProductos.classList.remove('tabla-navegacion-abierta');
+                contenidoTabla.classList.remove('tabla-navegacion-abierta');
+            } else {
+                navegacion.style.width = '150px';
+                tablaProductos.style.width = 'calc(100% - 150px)'; 
+                tablaProductos.classList.add('tabla-navegacion-abierta');
+                contenidoTabla.classList.add('tabla-navegacion-abierta');
+            }
         });
     </script>
 </body>

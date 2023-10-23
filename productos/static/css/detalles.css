@@ -4,10 +4,9 @@ h1 {
 }
 
 table {
-    border-collapse: collapse;
-    margin-right: 5px;
-    width: 90%;
-    border-radius: 15px;
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: separate;
     border-spacing: 10px;
 }
 
@@ -18,12 +17,14 @@ td {
     text-align: center;
     border-radius: 15px;
     padding: 7px;
+    font-family: 'Josefin Sans', sans-serif;
 
 }
 
 th {
     background-color: #f2f2f2;
     border-radius: 15px;
+    font-family: 'Josefin Sans', sans-serif;
 
 }
 .B{
@@ -33,19 +34,16 @@ th {
     text-decoration: none;
 }
 #navegador {
-    background: linear-gradient(90deg, #fdecda, #ffffff);
-    color: rgb(0, 0, 0);
-    width: 150px; /* Ancho original de la barra de navegación */
+    width: 150px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 100px; /* Cambia el valor a 0 para que la navegación se abra hacia la izquierda */
     height: 100%;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: width 0.3s; /* Transición del ancho para la animación */
+    transition: left 0.3s; /* Aplica una transición al margen izquierdo para animar la apertura/cierre */
 }
 
-/* Estilo para la tabla cuando la navegación está abierta */
 .tabla-navegacion-abierta {
-    margin-left: 50px; /* Ajusta el margen izquierdo cuando la navegación está abierta */
+    margin-left: 150px;
 }

@@ -11,6 +11,7 @@ body {
 }
 
 .registro-container {
+    justify-content: center;
     max-width: 400px;
     margin: 0 auto;
     padding: 40px;
@@ -39,6 +40,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
+    justify-content: center;
     width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -48,6 +50,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
+    justify-content: center;
     width: 100%;
     padding: 10px;
     background-color: #dd5d8e;
@@ -60,6 +63,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
+    justify-content: center;
     background-color: #e25aae;
 }
 
