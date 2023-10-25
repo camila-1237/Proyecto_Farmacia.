@@ -47,10 +47,21 @@ def registro_view(request):
         password2 = request.POST['password2']
 
         if password1 == password2:
-            user = User.objects.create_user(username=username, email=email, password=password1)
-            return redirect('login')  
+            if User.objects.filter(username=username).exists():
+                messages.error(request, 'El nombre de usuario ya está en uso.')
+            elif User.objects.filter(email=email).exists():
+                messages.error(request, 'El correo electrónico ya está registrado.')
+            else:
+                user = User.objects.create_user(username=username, email=email, password=password1)
+                user = authenticate(username=username, password=password1)
+                if user is not None:
+                    login(request, user)
+                    return redirect('login')  # Redirige al inicio de sesión después del registro
+        else:
+            messages.error(request, 'Las contraseñas no coinciden.')
 
     return render(request, 'registration/registro.html')
+
 def index( request ):
     return render(request, 'index.html')
 

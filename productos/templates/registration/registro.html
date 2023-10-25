@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Registro</title>
 </head>
-
 <body>
     <div class="registro-container">
         <br>
@@ -60,21 +58,20 @@
             var email = document.getElementById("email");
             var emailDomain = document.getElementById("email_domain").value;
             var parts = email.value.split('@');
-            var username = parts[0]
+            var username = parts[0];
             email.value = username + "@" + emailDomain;
         }
 
         function togglePasswordVisibility(inputId, toggleId) {
             var passwordInput = document.getElementById(inputId);
             var toggleIcon = document.getElementById(toggleId);
-        
+
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
             }
         }
-        
 
         document.getElementById("password1").addEventListener("input", validarContraseña);
         document.getElementById("password2").addEventListener("input", validarContraseña);
@@ -93,23 +90,29 @@
             if (tieneMayuscula && tieneNumero && tieneAsterisco) {
                 mensajeValidación1.textContent = "Contraseña válida.";
                 mensajeValidación1.style.color = "green";
-        
+                mensajeValidación1.style.marginTop = "10px";
+                mensajeValidación1.style.fontFamily = 'Josefin Sans, sans-serif';
             } else {
                 mensajeValidación1.textContent = "La contraseña debe contener al menos una letra mayúscula, un número y un asterisco (*).";
                 mensajeValidación1.style.color = "red";
+                mensajeValidación1.style.marginTop = "20px";
+                mensajeValidación1.style.fontFamily = 'Josefin Sans, sans-serif';
             }
 
             if (contraseña1 === contraseña2) {
                 mensajeValidación2.textContent = "Las contraseñas coinciden.";
                 mensajeValidación2.style.color = "green";
+                mensajeValidación2.style.marginTop = "10px";
+                mensajeValidación2.style.fontFamily = 'Josefin Sans, sans-serif';
                 botonRegistro.disabled = false;
             } else {
                 mensajeValidación2.textContent = "Las contraseñas no coinciden.";
                 mensajeValidación2.style.color = "red";
+                mensajeValidación2.style.marginTop = "20px";
+                mensajeValidación2.style.fontFamily = 'Josefin Sans, sans-serif';
                 botonRegistro.disabled = true;
             }
         }
     </script>
 </body>
-
 </html>

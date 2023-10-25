@@ -20,6 +20,7 @@ urlpatterns = [
     path('crear/', views.crear_venta, name='crear_venta'),
     path('agregar_transaccion/<int:venta_id>/', views.agregar_transaccion, name='agregar_transaccion'),
     path('mostrar_ventas/', views.mostrar_ventas, name='mostrar_ventas'),
+    
 ]
 
 
