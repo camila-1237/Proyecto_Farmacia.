@@ -12,15 +12,18 @@ from django.shortcuts import redirect
 from django.shortcuts import render, redirect
 from .models import Venta, Transaccion
 from .forms import VentaForm, TransaccionForm
+from django.contrib.auth.decorators import login_required
 
-
+# Vista para cerrar sesión
 def cerrar_sesion(request):
     logout(request)
     return redirect('login')
 
+# Vista de inicio
 def index_view(request):
     return render(request, 'index.html')
 
+# Vista de inicio de sesión
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -29,8 +32,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirigir al usuario a la página de inicio
-            return redirect('home')  # Asegúrate de que 'home' sea el nombre correcto de tu URL de inicio
+            return redirect('home')
         else:
             # Manejar el caso en que las credenciales de inicio de sesión no sean válidas
             # Puedes mostrar un mensaje de error o realizar otras acciones
@@ -38,7 +40,7 @@ def login_view(request):
 
     return render(request, 'registration/login.html')
 
-
+# Vista de registro de usuario
 def registro_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -56,28 +58,33 @@ def registro_view(request):
                 user = authenticate(username=username, password=password1)
                 if user is not None:
                     login(request, user)
-                    return redirect('login')  # Redirige al inicio de sesión después del registro
+                    return redirect('login')
         else:
             messages.error(request, 'Las contraseñas no coinciden.')
 
     return render(request, 'registration/registro.html')
 
-def index( request ):
+# Vista de inicio
+def index(request):
     return render(request, 'index.html')
 
-def base( request ):
+# Vista de la página base
+def base(request):
     return render(request, 'base.html')
 
+@login_required
 def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'productos/listar_productos.html', {'productos': productos})
 
+# Vista para ver detalles de un producto
 def detalle_producto(request, producto_id):
     producto = get_object_or_404(Producto, id_producto=producto_id)
     return render(request, 'productos/detalle_producto.html', {'producto': producto})
 
 from datetime import datetime
 
+# Vista para registrar un producto
 def registrar_producto(request):
     tipos = TipoProducto.objects.all()
 
@@ -92,6 +99,8 @@ def registrar_producto(request):
     hoy = datetime.today().strftime('%Y-%m-%d')
 
     return render(request, 'productos/registrar_producto.html', {'form': form, 'tipos': tipos, 'hoy': hoy})
+
+# Vista para modificar un producto
 def modificar_producto(request, id):
     producto = get_object_or_404(Producto, id_producto=id)
     tipos = TipoProducto.objects.all()
@@ -105,7 +114,7 @@ def modificar_producto(request, id):
         
     return render(request, 'productos/modificar_producto.html', {'form': form, 'tipos': tipos})
 
-
+# Vista para eliminar un producto
 def eliminar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id_producto=producto_id)
     if request.method == 'POST':
@@ -114,34 +123,31 @@ def eliminar_producto(request, producto_id):
 
     return render(request, 'productos/eliminar_productos.html', {'producto': producto})
 
-#JuanJo
-
+# Vista para buscar productos
 def buscar_productos(request):
     if request.method == 'GET':
         consulta = request.GET.get('consulta')
         resultados = Producto.objects.filter(
-            Q(nombre__icontains=consulta) |  
-            Q(codigo_barras__icontains=consulta)  
-            
+            Q(nombre__icontains=consulta) |
+            Q(codigo_barras__icontains=consulta)
         )
 
     return render(request, 'productos/buscador.html', {'resultados': resultados})
 
-
+# Vista para alertas de bajo inventario
 def alertas_bajo_inventario(request):
     if request.method == 'GET':
         parametros = request.GET
         parametros = Producto.objects.filter(
-            Q(cantidad_inventario__lte=10)     
+            Q(cantidad_inventario__lte=10)
         )   
 
         if parametros.exists():
             messages.success(request, "Productos con inventario bajo")
             
-        #else: messages.success(request, "No hay productos con bajo inventario")
-
     return render(request, 'productos/alertas.html', {'parametros': parametros})
 
+# Vista para crear una venta
 def crear_venta(request):
     if request.method == 'POST':
         venta_form = VentaForm(request.POST)
@@ -162,11 +168,7 @@ def crear_venta(request):
     }
     return render(request, 'venta/crear_venta.html', context)
 
-from .forms import TransaccionForm
-from .models import Venta, Producto
-
-
-from django.contrib import messages
+# Vista para agregar una transacción a una venta
 def agregar_transaccion(request, venta_id):
     venta = Venta.objects.get(id_venta=venta_id)
     
@@ -198,8 +200,7 @@ def agregar_transaccion(request, venta_id):
     }
     return render(request, 'venta/agregar_transaccion.html', context)
 
-
-
+# Vista para mostrar ventas
 def mostrar_ventas(request):
     ventas = Venta.objects.all()
     
@@ -207,3 +208,6 @@ def mostrar_ventas(request):
         'ventas': ventas,
     }
     return render(request, 'venta/mostrar_ventas.html', context)
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)

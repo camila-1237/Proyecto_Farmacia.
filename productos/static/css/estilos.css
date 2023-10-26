@@ -1,5 +1,5 @@
 #navegador {
-    background: linear-gradient(90deg, #fdecda, #ffffff); 
+    background: linear-gradient(90deg, #ff96c5, #ffffff); 
     color: rgb(0, 0, 0); 
     width: 150px; 
     position: fixed;
@@ -112,7 +112,7 @@
 }
 
 #barraSuperior {
-    background-color: #ffffff;
+    background-color:#ff96c5;
     color: white;
     padding: 10px;
     text-align: center;

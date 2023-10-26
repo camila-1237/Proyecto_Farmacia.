@@ -4,6 +4,7 @@ from . import views
 from django.contrib.auth.decorators import login_required
 
 
+
 urlpatterns = [
     path('', views.login_view, name='login'),  # Página de inicio de sesión como página principal
     path('base/', base, name='hogar'),
@@ -23,5 +24,6 @@ urlpatterns = [
     
 ]
 
+handler404 = 'productos.views.custom_404_view'
 
 

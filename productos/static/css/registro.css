@@ -133,6 +133,7 @@ button[type="submit"]:hover {
     outline: none;
     background-color: #e289b7;
     cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .f{
