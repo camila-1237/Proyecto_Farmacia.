@@ -1,24 +1,40 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <title>Alertas de Inventario Bajo</title>
+    <title>Alertas de Inventario</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/listas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alertas.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
+    
     {% include 'index.html' %}
 
+    {% block content %}
+    <h1>Productos Próximos a Vencer</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Producto</th>
+                <th>Fecha de Caducidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos_proximos_a_vencer %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.fecha_caducidad|date:"d/m/Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-{% block content %}
-
-{%endblock%}
-<script function></script>
-
-<h1>Productos que cuentan con un inventario Bajo</h1>
+    <h1>Productos Bajos en Inventario</h1>
     <table>
         <thead>
             <tr>
@@ -27,7 +43,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for producto in parametros %}
+            {% for producto in productos_inventario_bajo %}
             <tr>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.cantidad_inventario }}</td>
@@ -35,9 +51,19 @@
             {% endfor %}
         </tbody>
     </table>
+    {% endblock %}
 
-    <script>
     
+    <script>
+        // Muestra una alerta de ventana emergente (popup) con los productos próximos a vencer y bajos en inventario
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: 'Alertas de Inventario',
+                html: '<h3>Productos Próximos a Vencer:</h3><ul>{% for producto in productos_proximos_a_vencer %}<li>{{ producto.nombre }} (Fecha de Caducidad: {{ producto.fecha_caducidad|date:"d/m/Y" }})</li>{% endfor %}</ul><h3>Productos Bajos en Inventario:</h3><ul>{% for producto in productos_inventario_bajo %}<li>{{ producto.nombre }} (Cantidad en Inventario: {{ producto.cantidad_inventario }})</li>{% endfor %}</ul>',
+                icon: 'warning'
+            });
+        });
     </script>
+    
 </body>
 </html>

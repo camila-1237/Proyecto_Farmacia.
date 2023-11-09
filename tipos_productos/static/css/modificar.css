@@ -33,7 +33,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    background-color: #e289b7;
+    background-color: #000000;
     color: white;
     border: none;
     cursor: pointer;
@@ -42,11 +42,11 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #e289b7;
+    background-color: #000000;
 }
 
 
 
 a:hover {
-    background-color: #e289b7;
+    background-color: #000000;
 }

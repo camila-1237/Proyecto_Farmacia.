@@ -4,7 +4,6 @@ from . import views
 from django.contrib.auth.decorators import login_required
 
 
-
 urlpatterns = [
     path('', views.login_view, name='login'),  # Página de inicio de sesión como página principal
     path('base/', base, name='hogar'),
@@ -18,12 +17,13 @@ urlpatterns = [
     path('alertas/', views.alertas_bajo_inventario, name='alertas_productos'),
     path('detalle/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
     path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
-    path('crear/', views.crear_venta, name='crear_venta'),
-    path('agregar_transaccion/<int:venta_id>/', views.agregar_transaccion, name='agregar_transaccion'),
-    path('mostrar_ventas/', views.mostrar_ventas, name='mostrar_ventas'),
-    
+    path('productos_bajo_inventario/', views.alertas_bajo_inventario, name='productos_bajo_inventario'),
+    # path('crear/', views.crear_venta, name='crear_venta'),
+    # path('agregar_transaccion/<int:venta_id>/', views.agregar_transaccion, name='agregar_transaccion'),
+    # path('mostrar_ventas/', views.mostrar_ventas, name='mostrar_ventas'),
+    #path('venta/', views.venta, name='venta'),
+    path('venta/', views.venta, name='venta'),
 ]
 
-handler404 = 'productos.views.custom_404_view'
 
 

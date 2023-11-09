@@ -42,7 +42,7 @@ th {
 }
 button {
     padding: 10px 20px;
-    background-color:  #eb38a0;
+    background-color:  #000000;
     color: white;
     border: none;
     cursor: pointer;
@@ -51,7 +51,7 @@ button {
 }
 
 button:hover {
-    background-color: #ec8cf0;
+    background-color: #000000;
 }
 input[type="text"] {
     position: absolute;
@@ -65,7 +65,7 @@ input[type="text"] {
 }
 
 button[type="submit"] {
-    background-color:  #ec8cf0;
+    background-color:  #000000;
     position: absolute;
     left: 910px;
     top: 320px;

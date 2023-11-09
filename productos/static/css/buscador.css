@@ -90,7 +90,7 @@ button[type="submit"]:hover {
 
 
 button[type="submit"] {
-    background-color: #e289b7;
+    background-color: #000000;
     position: absolute;
     left: 630px;
     top: 21px;
@@ -128,7 +128,7 @@ button[type="submit"] {
 
 #formularioBusqueda button[type="submit"] {
     padding: 8px 16px;
-    background-color: #e289b7;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 15px;
